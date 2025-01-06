@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="firstWPFApp.View.UserControls.PrestamoItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:firstWPFApp.View.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="500">
+    <Grid>
+        <Border CornerRadius="10" Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="{Binding Titulo}" FontWeight="Bold" VerticalAlignment="Top"></Label>
+                <Image Grid.Row="1" Source="{Binding Foto}" Height="Auto" Width="Auto"></Image>
+                <StackPanel Grid.Row="2">
+                    <TextBlock FontSize="12" FontWeight="Bold" Margin="0,43,0,55" Text="{Binding Precio}" VerticalAlignment="Top"></TextBlock>
+                    <TextBlock Text="{Binding Descripcion}" VerticalAlignment="Bottom"></TextBlock>
+                </StackPanel>
+                <Label Grid.Row="3" x:Name="labelDiasRestantes" Content="{Binding diasRestantes}"></Label>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Editar Articulo" Click="EditarPrestamo_Click" Margin="5"></Button>
+                    <Button Grid.Column="1" Content="Registrar Pago" Click="Pagar_Click" Margin="5"></Button>
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

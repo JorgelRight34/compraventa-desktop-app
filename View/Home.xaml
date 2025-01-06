@@ -1,0 +1,505 @@
+﻿<Window x:Class="firstWPFApp.View.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:firstWPFApp.View"
+        xmlns:UserControls="clr-namespace:firstWPFApp.View.UserControls" xmlns:Models="clr-namespace:firstWPFApp.Models"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        Title="Home" Height="750" Width="1200" >
+
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu -->
+        <Grid Width="Auto">
+            <Border CornerRadius="10,0,0,10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="LightBlue" Offset="0" />
+                        <GradientStop Color="DarkBlue" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <StackPanel Height="Auto" Width="Auto" VerticalAlignment="Center">
+
+                <!-- Usuario -->
+                <RadioButton x:Name="Usuario" Click="Usuario_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="User" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock x:Name="nombreUsuario" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Pagos -->
+                <RadioButton x:Name="Pagos" Click="Pagos_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="ClockRotateLeft" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Pagos" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Empeños Activos -->
+                <RadioButton x:Name="VerPrestamos" Click="VerPrestamos_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="HandHolding" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Empeños Activos" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Empeños Pasados -->
+                <RadioButton Click="VerPrestamosPasados_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="ClockRotateLeft" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Empeños Pasados" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Registrar Empeños -->
+                <RadioButton x:Name="RegistrarPrestamo" Click="Registrar_Prestamo_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="Folder" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Registrar Empeños" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Ver Clientes -->
+                <RadioButton x:Name="VerClientes" Click="VerClientes_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="UserGroup" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Ver Clientes" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Registrar Clientes-->
+                <RadioButton x:Name="RegistrarCliente" Click="RegistrarCliente_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="User" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Registrar Cliente" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Inventario -->
+                <RadioButton x:Name="Inventario" Click="Inventario_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="Box" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Inventario" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Agregar al Inventario -->
+                <RadioButton x:Name="AgregarInventario" Click="AgregarInventario_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="Add" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Agregar Al Inventario" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Ventas -->
+                <RadioButton x:Name="Ventas" Click="Ventas_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="Sellcast" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Ventas" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Generar Registros -->
+                <RadioButton Style="{StaticResource MenuButtonStyle}" Tag="Blue" Click="GenerarRegistros_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="FileExcel" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Generar Registros" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Cerrar Sesion -->
+                <RadioButton x:Name="CerrarSesion" Click="CerrarSesion_Click" Style="{StaticResource MenuButtonStyle}" Tag="Blue">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <fa:IconImage Icon="RightFromBracket" Style="{StaticResource menuBotonIcon}" HorizontalAlignment="Left"></fa:IconImage>
+                        <TextBlock Text="Cerrar Sesion" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+            </StackPanel>
+        </Grid>
+
+
+        <!-- Columna Derecha -->
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.125*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <fa:IconImage x:Name="Icon" Style="{StaticResource menuBotonIcon}" Foreground="Black"></fa:IconImage>
+                    <TextBlock x:Name="Titulo" Style="{StaticResource menuBotonText}" Foreground="Black"></TextBlock>
+                </StackPanel>
+
+                <!-- Barra de Busqueda -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <fa:IconImage Icon="Search" Style ="{StaticResource menuBotonIcon}" Foreground="Black"/>
+                    <TextBox x:Name="txtBuscar" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"
+                             Width="300" Height="30" VerticalContentAlignment="Center"
+                              Foreground="Gray"  
+                             MouseDown="txtBuscar_MouseDown">
+                        
+                    </TextBox>
+                    <Button Content="Buscar" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right"
+                             Width="80" Height="30" Click="Buscar_Click" Style="{StaticResource formBoton}"/>
+                </StackPanel>
+
+                <!-- Vista en Tabla -->
+                <RadioButton x:Name="VistaTabla" Click="VistaTabla_Click" Margin="10"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MenuButtonStyle}" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="TableCells" Style="{StaticResource menuBotonIcon}" Foreground="DarkBlue"></fa:IconImage>
+                        <TextBlock Text="Vista en Tabla" Style="{StaticResource menuBotonText}" Foreground="DarkBlue"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+                <!-- Vista Normal -->
+                <RadioButton x:Name="VistaNormal" Click="VistaNormal_Click" Margin="10"  HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MenuButtonStyle}" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="RectangleList" Style="{StaticResource menuBotonIcon}" Foreground="DarkBlue"></fa:IconImage>
+                        <TextBlock Text="Vista Normal" Style="{StaticResource menuBotonText}" Foreground="DarkBlue"></TextBlock>
+                    </StackPanel>
+                </RadioButton>
+
+            </Grid>
+
+            
+            <!-- Contenido -->
+            <Grid Grid.Row="1" HorizontalAlignment="Center">
+
+                <!-- Lista de prestamos, se muestra al dar click al boton "Ver Prestamos" pero por default esta activado -->
+                <ScrollViewer x:Name="lstPrestamos_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstPrestamos" Width="Auto" ItemsSource="{Binding prestamos}" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Transparent" BorderThickness="0" Margin="0" Style="{StaticResource sombra}">
+                                    <UserControls:PrestamoView Height="275" Width="375" Margin="10"></UserControls:PrestamoView>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista en tabla de prestamos -->
+                <Grid x:Name="PrestamosGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="PrestamosDataGrid" ItemsSource="{Binding prestamos}"
+                      Visibility="Visible" CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Articulo" Binding="{Binding Titulo}"/>
+                            <DataGridTextColumn Header="Id Cliente" Binding="{Binding Id_Cliente}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Tasa de Interés" Binding="{Binding TasaInteres}"/>
+                            <DataGridTextColumn Header="Plazo" Binding="{Binding Plazo}"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                            <DataGridTextColumn Header="Capital pagado" Binding="{Binding CapitalPagado}"/>
+                            <DataGridTextColumn Header="Interés pagado" Binding="{Binding InteresPagado}"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="PrestamosCount"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarPrestamo_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+                </Grid>
+
+
+                <!-- Lista de prestamos pasados, se muestra al dar click al boton "Empenos Pasados" -->
+                <ScrollViewer x:Name="lstPrestamosPasados_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstPrestamosPasados" Width="Auto" ItemsSource="{Binding prestamosPasados}" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Transparent" BorderThickness="0" Margin="0" Style="{StaticResource sombra}">
+                                    <UserControls:PrestamoView Height="275" Width="375" Margin="10"></UserControls:PrestamoView>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista en tabla de prestamos pasados -->
+                <Grid x:Name="PrestamosPasadosGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="PrestamosPasadosDataGrid" ItemsSource="{Binding prestamosPasados}"
+                      Visibility="Visible" CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Articulo" Binding="{Binding Titulo}"/>
+                            <DataGridTextColumn Header="Id_Cliente" Binding="{Binding Id_Cliente}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Tasa de Interés" Binding="{Binding TasaInteres}"/>
+                            <DataGridTextColumn Header="Plazo" Binding="{Binding Plazo}"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                            <DataGridTextColumn Header="Capital pagado" Binding="{Binding CapitalPagado}"/>
+                            <DataGridTextColumn Header="Interés pagado" Binding="{Binding InteresPagado}"/>
+                            <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="PrestamosPasadosCount"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarPrestamo_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+
+                </Grid>
+
+                <!-- Lista de Pagos -->
+                <ScrollViewer x:Name="lstPrestamosPago_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1" Visibility="Hidden">
+                    <ItemsControl x:Name="lstPrestamosPago" Width="Auto" ItemsSource="{Binding prestamos}" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <UserControls:ListItemProducto Height="275" Width="275" Margin="10"></UserControls:ListItemProducto>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista de pagos, se muestra al dar click al boton "Pagos" -->
+                <Grid x:Name="PagosGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="PagosDataGrid" ItemsSource="{Binding pagos}"
+                      CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Id_Préstamo" Binding="{Binding Id_Prestamo}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                            <DataGridTextColumn Header="Capital Pagado" Binding="{Binding Capital_Pagado}"/>
+                            <DataGridTextColumn Header="Interés Pagado" Binding="{Binding Interes_Pagado}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="PagosCount"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarPago_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+                </Grid>
+
+
+                <!-- Lista de productos, se muestra al dar click al boton "Inventario" -->
+                <ScrollViewer x:Name="lstInventario_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstInventario" Width="Auto" Grid.Column="1" ItemsSource="{Binding productos}" Padding="0" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Transparent" BorderThickness="0" Margin="0" Style="{StaticResource sombra}">
+                                    <UserControls:ListItemProducto Height="275" Width="275" Margin="10"></UserControls:ListItemProducto>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista en tabla de productos -->
+                <Grid x:Name="InventarioGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="InventarioDataGrid" ItemsSource="{Binding productos}"
+                      Visibility="Visible" CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Articulo" Binding="{Binding Titulo}"/>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Descripcion}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="InventarioCount"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarProducto_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+
+                </Grid>
+
+                <!-- Lista de Ventas, se muestra al dar click al boton "Inventario" -->
+                <ScrollViewer x:Name="lstVentas_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstVentas" Width="Auto" Grid.Column="1" ItemsSource="{Binding ventas}" Padding="0" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Transparent" BorderThickness="0" Margin="0" Style="{StaticResource sombra}">
+                                    <UserControls:VentaItem Height="275" Width="275" Margin="10"></UserControls:VentaItem>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista de Ventas en tabla, se muestra al dar click al boton "Ventas" -->
+                <Grid x:Name="VentasGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="VentasDataGrid" ItemsSource="{Binding ventas}"
+                      Visibility="Visible" CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Id Cliente" Binding="{Binding Id_Cliente}"/>
+                            <DataGridTextColumn Header="Articulo" Binding="{Binding Id_Articulo}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
+                            <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="VentasCount"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarVenta_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+
+                </Grid>
+
+                <!-- Lista de clientes, se muestra al dar click al boton "Clientes" -->
+                <ScrollViewer x:Name="lstClientes_ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                    <ItemsControl x:Name="lstClientes" Width="Auto" Grid.Column="1" ItemsSource="{Binding clientes}" Padding="0" HorizontalAlignment="Left" Visibility="Hidden">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <UserControls:MenuBar1 Height="200" Width="275" Margin="10"></UserControls:MenuBar1>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Lista en tabla de clientes -->
+                <Grid x:Name="ClientesGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.125*"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="ClientesDataGrid" ItemsSource="{Binding clientes}"
+                      Visibility="Visible" CanUserAddRows="False" CanUserDeleteRows="False"
+                      Margin="10" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id Cliente" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Nombre Completo" Binding="{Binding Nombre}"/>
+                            <DataGridTextColumn Header="Cédula" Binding="{Binding Cedula}"/>
+                            <DataGridTextColumn Header="Género" Binding="{Binding Genero}"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                            <DataGridTextColumn Header="Fecha de Nacimiento" Binding="{Binding FechaNacimiento}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Calibri" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Registros: " FontWeight="Medium"/>
+                            <Run x:Name="ClientesCount" Text="{Binding registrosActuales}"/>
+                        </TextBlock>
+                        <Button Content="Editar" Click="EditarCliente_Click" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource formBoton}"></Button>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,112 @@
+﻿<Window x:Class="firstWPFApp.View.EditarArticulo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:firstWPFApp.View"
+        mc:Ignorable="d"
+        Title="EditarArticulo" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label FontSize="20" FontFamily="Calibri">Editar Articulo</Label>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                            <Label FontFamily="Calibri">Articulo Titulo</Label>
+                            <TextBox x:Name="txtTitulo" Height="25" Width="Auto" ></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- Descripcion -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                            <Label FontFamily="Calibri">Descripcion</Label>
+                            <TextBox x:Name="txtDescripcion" Height="25" Width="Auto" ></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- Precio -->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                            <Label FontFamily="Calibri">Precio</Label>
+                            <TextBox x:Name="txtPrecio" Height="25" Width="Auto" ></TextBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!-- Subir Foto -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="9*"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="1" x:Name="SubirFoto" Content="Subir Foto" Background="White" BorderThickness="0"></Button>
+                <Image x:Name="imagenArticulo" Grid.Row="1"></Image>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!-- Boton "Retornar" -->
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="Borrar" Width="Auto" Height="Auto" Click="Borrar_Click" Margin="5"></Button>
+            </Grid>
+
+            <!-- Boton "Guardar" -->
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Content="Guardar" Width="Auto" Height="Auto" Click="Guardar_Click" Margin="5"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,76 @@
+﻿<Window x:Class="firstWPFApp.View.IniciarSesion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:firstWPFApp.View"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        mc:Ignorable="d"
+        Title="IniciarSesion" Height="500" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="1.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Columna Izquierda -->
+        <Border CornerRadius="10,0,0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="LightBlue" Offset="0" />
+                    <GradientStop Color="DarkBlue" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!-- Regístrate -->
+            <Grid>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource titleText}" Text="Regístrate"></TextBlock>
+                    <TextBlock Text="Si eres nuevo en la empresa ingresa y sé un nuevo miembro" Style="{StaticResource normalText}" Opacity="0.8" Margin="20 30"></TextBlock>
+                    <Button x:Name="SignUp" Click="SignUp_Click" Content="Registrarse" Style="{StaticResource boton}"></Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Columna Derecha -->
+        <Border Grid.Column="1" Background="#ffffff" CornerRadius="0,10,10,0">
+
+            <!-- Iniciar Sesión (Texto)-->
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Style="{StaticResource titleText}" Text="Inicia Sesión" Foreground="MediumBlue"></TextBlock>
+                <TextBlock Text="Ingrese sus datos" Style="{StaticResource normalText}" Foreground="#878787" Margin="0 30 0 15"></TextBlock>
+                
+                <!-- Email -->
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <fa:IconImage Icon="Envelope" Foreground="#acb0af" Height="20"></fa:IconImage>
+                        <TextBlock x:Name="textEmail" Text="Email" MouseDown="textEmail_MouseDown" Style="{StaticResource textHint}"></TextBlock>
+                        <TextBox x:Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource textBox}"></TextBox>
+                    </Grid>
+                    
+                </Border>
+
+                <!-- Contraseña -->
+                <Border BorderThickness="1" BorderBrush="#acb0af" Margin="70 7" CornerRadius="5">
+                    <Grid Margin="7 9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <fa:IconImage Icon="Lock" Foreground="#acb0af" Height="20" Visibility="Visible"></fa:IconImage>
+                        <TextBlock x:Name="textContrasena" Text="Contraseña" MouseDown="textContrasena_MouseDown" Style="{StaticResource textHint}"></TextBlock>
+                        <PasswordBox x:Name="txtContrasena" PasswordChanged="txtContrasena_PasswordChanged" Style="{StaticResource textBox}"></PasswordBox>
+                    </Grid>
+                </Border>
+                <Button Content="Ingresar" Click="Submit_Click" Style="{StaticResource botonSubmit}"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
